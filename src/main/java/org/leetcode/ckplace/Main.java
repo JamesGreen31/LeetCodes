@@ -17,6 +17,6 @@ public class Main {
                 "leetcode description: " + leetcode.getProblemDescription() + "\n" +
                 "leetcode url: " + leetcode.getProblemLink() + "\n\n" +
                 "output:\n" + leetcode.getProblemExectable().getOutput() + "\n" +
-                "time: " + leetcode.getProblemExectable().getRunTime();
+                "your time (ms): " + leetcode.getProblemExectable().getRunTime();
     }
 }

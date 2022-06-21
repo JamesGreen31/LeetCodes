@@ -3,24 +3,9 @@ package org.problem1.leetcode.ckplace;
 import org.leetcode.ckplace.ProblemExecutable;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-
-@interface solution{
-/*     class Solution {
-     public int[] twoSum(int[] nums, int target) {
-     Map<Integer, Integer> map = new HashMap<>();
-     for (int i = 0; i < nums.length; i++) {
-     int complement = target - nums[i];
-     if (map.containsKey(complement)) {
-     return new int[] { map.get(complement), i };
-     }
-     map.put(nums[i], i);
-     }
-     // In case there is no solution, we'll just return null
-     return null;
-     }
-     }*/
-}
 /**
  * Leetcode problem one: TwoSum.
  * Completed 6/20/2022
@@ -31,7 +16,7 @@ public class ProblemOne implements ProblemExecutable {
     private  String output;
     private long startTime;
     private long endtime;
-    private int[][] input = new int[][]{{3,2,4},{6}}; //example data
+    private int[][] input = new int[][]{{3,3},{6}}; //example data
 
     @Override
     public void run() {
@@ -44,17 +29,18 @@ public class ProblemOne implements ProblemExecutable {
          */
 
         //sort the array using quicksort O(n*log(n))
-        startTime = System.currentTimeMillis();
         output = "";
         output += "input: " +"\n" + Arrays.toString(input[0]) + " target: "
                 + Arrays.toString(input[1]);
         output += "\n"+"result: " + Arrays.toString(TwoSum(input[0],input[1][0]));
-        endtime = System.currentTimeMillis();
-
-
+        long leetcode_time = System.currentTimeMillis();
+        int[] dead = TwoSumSolution(input[0],input[1][0]); // to calculate the solution
+        long leetcode_endtime = System.currentTimeMillis();
+        output+= "\n-----" + "\nLeet Code prefered time solved this in " + (leetcode_endtime-leetcode_time);
     }
 
     private int[] TwoSum(int[] nums, int target) {
+        this.startTime = System.currentTimeMillis();
         int startIndex = 0;
         int endIndex = 1;
         while(startIndex<nums.length-1){
@@ -70,7 +56,21 @@ public class ProblemOne implements ProblemExecutable {
             }
         }
         //we can assume that only valid input is given
+        this.endtime = System.currentTimeMillis();
         return new int[]{startIndex,endIndex};
+    }
+
+    private int[] TwoSumSolution(int[] nums, int target){
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        // In case there is no solution, we'll just return null
+        return null;
     }
 
     @Override
