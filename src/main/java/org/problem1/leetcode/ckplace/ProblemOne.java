@@ -4,11 +4,34 @@ import org.leetcode.ckplace.ProblemExecutable;
 
 import java.util.Arrays;
 
+
+@interface solution{
+/*     class Solution {
+     public int[] twoSum(int[] nums, int target) {
+     Map<Integer, Integer> map = new HashMap<>();
+     for (int i = 0; i < nums.length; i++) {
+     int complement = target - nums[i];
+     if (map.containsKey(complement)) {
+     return new int[] { map.get(complement), i };
+     }
+     map.put(nums[i], i);
+     }
+     // In case there is no solution, we'll just return null
+     return null;
+     }
+     }*/
+}
+/**
+ * Leetcode problem one: TwoSum.
+ * Completed 6/20/2022
+ */
+//TODO Read about hashmaps as you had the solution, but didn't know how to properly implement it
+//  Hashmaps would have solved that for you/
 public class ProblemOne implements ProblemExecutable {
     private  String output;
     private long startTime;
     private long endtime;
-    private int[][] input = new int[][]{{3,2,4},{6}};
+    private int[][] input = new int[][]{{3,2,4},{6}}; //example data
 
     @Override
     public void run() {
@@ -27,32 +50,27 @@ public class ProblemOne implements ProblemExecutable {
                 + Arrays.toString(input[1]);
         output += "\n"+"result: " + Arrays.toString(TwoSum(input[0],input[1][0]));
         endtime = System.currentTimeMillis();
+
+
     }
 
     private int[] TwoSum(int[] nums, int target) {
+        int startIndex = 0;
+        int endIndex = 1;
+        while(startIndex<nums.length-1){
 
-/*        //cannot sort the array because pickles
-        int minIndex = 0;
-        int maxIndex = nums.length-1;
-        while(minIndex<maxIndex){
-            int low_target = nums[minIndex];
-            int high_target = nums[maxIndex];
-            if(low_target + high_target < target){
-                minIndex++;
-            }else if(low_target + high_target > target){
-                minIndex = 0;
-                maxIndex--;
+            if(nums[startIndex] + nums[endIndex] != target){
+                endIndex++;
             }else{
-                //we found the answer.
                 break;
             }
+            if(endIndex == nums.length){
+                startIndex++;
+                endIndex =startIndex+1;
+            }
         }
-        if(maxIndex>minIndex){
-            return new int[]{minIndex,maxIndex};
-        }else{
-            return new int[]{-1}; // no solution
-        }*/
-        return null;
+        //we can assume that only valid input is given
+        return new int[]{startIndex,endIndex};
     }
 
     @Override
@@ -73,7 +91,7 @@ public class ProblemOne implements ProblemExecutable {
 
     @Override
     public float getRunTime() {
-        return (endtime - startTime)/1000;
+        return (endtime - startTime);
     }
 
     @Override
