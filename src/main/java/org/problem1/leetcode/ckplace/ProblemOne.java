@@ -36,15 +36,10 @@ public class ProblemOne implements ProblemExecutable {
          */
 
         //sort the array using quicksort O(n*log(n))
-        output = "";
-        output += "input: " +"\n" + Arrays.toString(input[0]) + " target: "
-                + Arrays.toString(input[1]);
-        output += "\n"+"result: " + Arrays.toString(TwoSum(input[0],input[1][0]));
-        long leetcode_time = System.nanoTime();
-        int[] dead = TwoSumSolution(input[0],input[1][0]); // to calculate the solution
-        long leetcode_endtime = System.nanoTime();
-        output+= "\n-----" + "\nLeet Code prefered time solved this in " + (leetcode_endtime-leetcode_time)/1000000f;
-    }
+
+        output =  Arrays.toString(TwoSum(input[0],input[1][0]));
+        //TODO abstract this so we can get the leetcode prefered solution
+     }
 
     private int[] TwoSum(int[] nums, int target) {
         this.startTime = System.nanoTime();

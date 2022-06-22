@@ -22,15 +22,14 @@ public class LeetProblem implements LeetCode{
      * @param problemNumber the problem number of the leetcode question
      * @param problemLink the link to the leetcode problem
      * @param problemDescription the description of the leetcode problem
-     * @param exec the exexcutable function of the problem
      */
-    public LeetProblem(int problemNumber,String problemLink, String problemDescription, int exec){
+    public LeetProblem(int problemNumber,String problemLink, String problemDescription){
         this.problemNumber = problemNumber;
         this.problemLink = problemLink;
         this.problemDescription = problemDescription;
         this.pxe = pfe.find(problemNumber);
     }
-    public LeetProblem(int problemNumber,String problemLink, String problemDescription, int exec, Object[] input){
+    public LeetProblem(int problemNumber,String problemLink, String problemDescription, Object[] input){
         this.problemNumber = problemNumber;
         this.problemLink = problemLink;
         this.problemDescription = problemDescription;

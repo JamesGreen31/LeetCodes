@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] arg){
         //console based for now
 
-        int leetToFind = 1; //set to 0 for testing the run time setup
-        Object[] input = new int[][]{{3,3},{6}};
+        int leetToFind = 2; //set to 0 for testing the run time setup
+        Object[] input = new String[]{"STovoKOR"};
         ProblemFinder dictionary = new ProblemFinder();
         System.out.println(generateOutput(dictionary.findleets(leetToFind,input)));
 
@@ -18,6 +18,6 @@ public class Main {
                 "leetcode description: " + leetcode.getProblemDescription() + "\n" +
                 "leetcode url: " + leetcode.getProblemLink() + "\n\n" +
                 "output:\n" + leetcode.getProblemExectable().getOutput() + "\n" +
-                "your time (ms): " + leetcode.getProblemExectable().getRunTime();
+                "your time (ms): " + leetcode.getProblemExectable().getRunTime() + "ms";
     }
 }

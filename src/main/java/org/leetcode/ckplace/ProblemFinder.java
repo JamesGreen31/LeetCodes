@@ -2,6 +2,8 @@ package org.leetcode.ckplace;
 
 import org.problem1.leetcode.ckplace.LeetOne;
 import org.problem1.leetcode.ckplace.ProblemOne;
+import org.problem344.leetcode.ckplace.Leet344;
+import org.problem344.leetcode.ckplace.Problem344;
 
 public class ProblemFinder {
     ProblemExecutable find(int problem_num){
@@ -11,6 +13,7 @@ public class ProblemFinder {
     ProblemExecutable find(int problem_num, Object[] input){
         return switch (problem_num) {
             case 1 -> input == null ? new ProblemOne(): new ProblemOne(input);
+            case 344 -> input == null ? new Problem344(): new Problem344(input);
             default -> new ProblemExecutable() {
                 @Override
                 public void run() {
@@ -42,6 +45,7 @@ public class ProblemFinder {
     LeetCode findleets(int num, Object[] input){
         return switch (num){
             case 1->  input==null ? new LeetOne(): new LeetOne(input);
+            case 2-> input ==null ? new Leet344(): new Leet344(input);
             default -> new LeetProblem();
         };
     }
