@@ -30,7 +30,12 @@ public class LeetProblem implements LeetCode{
         this.problemDescription = problemDescription;
         this.pxe = pfe.find(problemNumber);
     }
-
+    public LeetProblem(int problemNumber,String problemLink, String problemDescription, int exec, Object[] input){
+        this.problemNumber = problemNumber;
+        this.problemLink = problemLink;
+        this.problemDescription = problemDescription;
+        this.pxe = pfe.find(problemNumber,input);
+    }
     /**
      * @return the problem number of the leet code question
      */

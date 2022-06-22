@@ -7,8 +7,9 @@ public class Main {
         //console based for now
 
         int leetToFind = 1; //set to 0 for testing the run time setup
+        Object[] input = new int[][]{{3,3},{6}};
         ProblemFinder dictionary = new ProblemFinder();
-        System.out.println(generateOutput(dictionary.findleets(leetToFind)));
+        System.out.println(generateOutput(dictionary.findleets(leetToFind,input)));
 
 
     };

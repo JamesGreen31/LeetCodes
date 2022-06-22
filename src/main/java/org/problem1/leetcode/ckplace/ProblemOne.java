@@ -16,7 +16,14 @@ public class ProblemOne implements ProblemExecutable {
     private  String output;
     private long startTime;
     private long endtime;
-    private int[][] input = new int[][]{{3,3},{6}}; //example data
+    private int[][] input = new int[2][]; //example data
+
+    public ProblemOne(Object[] input){
+        catchInput(input);
+    }
+    public ProblemOne(){
+        input = new int[][]{{3,3},{6}};
+    }
 
     @Override
     public void run() {
@@ -33,14 +40,15 @@ public class ProblemOne implements ProblemExecutable {
         output += "input: " +"\n" + Arrays.toString(input[0]) + " target: "
                 + Arrays.toString(input[1]);
         output += "\n"+"result: " + Arrays.toString(TwoSum(input[0],input[1][0]));
-        long leetcode_time = System.currentTimeMillis();
+        long leetcode_time = System.nanoTime();
         int[] dead = TwoSumSolution(input[0],input[1][0]); // to calculate the solution
-        long leetcode_endtime = System.currentTimeMillis();
-        output+= "\n-----" + "\nLeet Code prefered time solved this in " + (leetcode_endtime-leetcode_time);
+        long leetcode_endtime = System.nanoTime();
+        output+= "\n-----" + "\nLeet Code prefered time solved this in " + (leetcode_endtime-leetcode_time)/1000000f;
     }
 
     private int[] TwoSum(int[] nums, int target) {
-        this.startTime = System.currentTimeMillis();
+        this.startTime = System.nanoTime();
+        //begin leet code
         int startIndex = 0;
         int endIndex = 1;
         while(startIndex<nums.length-1){
@@ -55,9 +63,13 @@ public class ProblemOne implements ProblemExecutable {
                 endIndex =startIndex+1;
             }
         }
+        this.endtime = System.nanoTime(); //omitted from solution
+        if(startIndex == nums.length - 1){
+            return new int[]{-1};
+        }
         //we can assume that only valid input is given
-        this.endtime = System.currentTimeMillis();
         return new int[]{startIndex,endIndex};
+        //end leet code
     }
 
     private int[] TwoSumSolution(int[] nums, int target){
@@ -73,11 +85,6 @@ public class ProblemOne implements ProblemExecutable {
         return null;
     }
 
-    @Override
-    public void runWithInput(Object[] args) {
-        catchInput(args);
-        run();
-    }
 
     private void catchInput(Object[] args) {
         try{
@@ -91,7 +98,7 @@ public class ProblemOne implements ProblemExecutable {
 
     @Override
     public float getRunTime() {
-        return (endtime - startTime);
+        return (endtime - startTime)/1000000f;
     }
 
     @Override

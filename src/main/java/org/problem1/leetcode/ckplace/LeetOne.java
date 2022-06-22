@@ -17,7 +17,7 @@ public class LeetOne extends LeetProblem {
                 "You may assume that each input would have exactly one " +
                 "solution, and you may not use the same element twice.\n" +
                 "\n" +
-                "You can return the answer in any order.",-1);
+                "You can return the answer in any order.",1,args);
     }
 }
 
